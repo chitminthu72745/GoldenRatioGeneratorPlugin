@@ -1,0 +1,231 @@
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+  rel="stylesheet"
+/>
+<style>
+  .poppins-thin {
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+  }
+
+  .poppins-extralight {
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+  }
+
+  .poppins-light {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  .poppins-regular {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .poppins-medium {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  .poppins-semibold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  .poppins-bold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  .poppins-extrabold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+  }
+
+  .poppins-black {
+    font-family: "Poppins", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+
+  .poppins-thin-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+  }
+
+  .poppins-extralight-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-style: italic;
+  }
+
+  .poppins-light-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  .poppins-regular-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  .poppins-medium-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+  }
+
+  .poppins-semibold-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: italic;
+  }
+
+  .poppins-bold-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+
+  .poppins-extrabold-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-style: italic;
+  }
+
+  .poppins-black-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+  }
+
+  h1 {
+    margin: 0;
+    padding: 0;
+    color: #cc8500;
+    font-size: 22px;
+  }
+  h4 {
+    font-size: 14px;
+    margin: -8px;
+    padding: 0;
+    color: #976200;
+  }
+  body {
+    padding-inline: 20px;
+    background-color: #141414;
+  }
+  label {
+    font-size: 10px;
+    color: #cc8500;
+  }
+  div input {
+    width: 100%;
+    border-radius: 5px;
+    background: #fff;
+    border: 2px solid #cc8500;
+    outline: none;
+    background-color: #141414;
+    color: #cc8500;
+    border-color: #cc8500;
+    padding: 14px 8px 14px 8px;
+    display: inline;
+    margin-top: 4px;
+    margin-bottom: 6px;
+  }
+
+  div input:focus {
+    border: 2px solid #cc8500;
+    box-shadow: 0px 0px 3px 1px #cc8500;
+  }
+
+  button {
+    text-align: center;
+    background-color: #cc8500;
+    text-decoration: none;
+    color: black;
+  }
+  .special-link {
+    text-align: center;
+    cursor: pointer;
+    padding: 10px 15px 10px 15px;
+    border-radius: 5px;
+    display: inline-flex;
+    font-size: 16px;
+    background-color: #cc8500;
+    border: 1px solid #cc8500;
+    color: white;
+    transition: all 0.2s linear 0s;
+  }
+
+  .special-link:hover {
+    background-color: white !important;
+    color: #cc8500;
+  }
+  .head_title {
+    background-color: #130c00;
+    margin-top: 20px;
+    text-align: center;
+    border-radius: 3px;
+    border: 1px dashed #794e00;
+    padding: 5px 0px 20px 0px;
+  }
+  a {
+    display: block;
+    position: fixed;
+    bottom: 5;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    color: #cc8500;
+  }
+</style>
+
+<div class="head_title">
+  <h1 class="poppins-medium">Golden Ratio</h1>
+  <h4 class="poppins-regular">Font Style Generator</h4>
+</div>
+
+<div class="poppins-medium" style="margin-top: 50px">
+  <label for="count" style="font-size: 14px">Base Font Size (px)</label>
+  <input id="count" type="number" value="16" />
+  <div style="text-align: center">
+    <button id="create" class="special-link">Generate</button>
+  </div>
+</div>
+
+<a
+  href="https://www.linkedin.com/in/chit-min-thu-uiux/"
+  target="_blank"
+  class="poppins-light"
+  >Advice give to Creator</a
+>
+<script>
+  document.getElementById("create").onclick = () => {
+    const textbox = document.getElementById("count");
+    const count = parseInt(textbox.value, 10);
+    parent.postMessage(
+      { pluginMessage: { type: "generate-all-tag-styles", count } },
+      "*"
+    );
+  };
+
+  document.getElementById("cancel").onclick = () => {
+    parent.postMessage({ pluginMessage: { type: "cancel" } }, "*");
+  };
+</script>
