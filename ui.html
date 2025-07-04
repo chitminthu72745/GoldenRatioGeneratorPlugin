@@ -87,10 +87,29 @@
       >Advice give to Creator</a
     >
 
+    <div
+      id="success-message"
+      style="
+        display: none;
+        text-align: center;
+        padding: 10px;
+        margin-top: 13px;
+        color: #118f00;
+        font-size: 11px;
+        background-color: #7dff6341;
+        box-shadow: 0px 5px 10px #d1d1d1;
+      "
+    >
+      ✅ Golden ratio styles generated successfully! Check your styles
+      component.
+    </div>
+
     <script>
       onmessage = (event) => {
-        if (event.data.pluginMessage.type === "font-list") {
-          const fonts = event.data.pluginMessage.fonts;
+        const msg = event.data.pluginMessage;
+
+        if (msg.type === "font-list") {
+          const fonts = msg.fonts;
           const select = document.getElementById("font-select");
 
           fonts.forEach((font) => {
@@ -100,9 +119,22 @@
             select.appendChild(option);
           });
         }
+
+        if (msg.type === "generation-complete") {
+          const successBox = document.getElementById("success-message");
+          successBox.style.display = "block";
+
+          // Optional: Hide after 3 seconds
+          setTimeout(() => {
+            successBox.style.display = "none";
+          }, 5000);
+        }
       };
 
-      document.getElementById("create").onclick = () => {
+      // Button click handler
+
+      const createBtn = document.getElementById("create");
+      createBtn.onclick = () => {
         const count = parseInt(document.getElementById("count").value, 10);
         const fontName = JSON.parse(
           document.getElementById("font-select").value

@@ -1,5 +1,5 @@
 // code.ts
-figma.showUI(__html__, { width: 360, height: 400 });
+figma.showUI(__html__, { width: 360, height: 440 });
 
 figma.listAvailableFontsAsync().then((fonts) => {
   const defaultFonts = fonts
@@ -50,7 +50,8 @@ figma.ui.onmessage = async (msg) => {
       style.description = `Golden Ratio style for <${tag}>`;
     }
 
-    figma.notify("All golden ratio styles generated 🎉");
-    figma.closePlugin();
+    figma.ui.postMessage({ type: "generation-complete" });
+    // figma.notify("All golden ratio styles generated 🎉");
+    // figma.closePlugin();
   }
 };
