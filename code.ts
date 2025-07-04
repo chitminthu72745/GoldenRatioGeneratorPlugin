@@ -1,13 +1,24 @@
-figma.showUI(__html__, { width: 300, height: 350 });
+// code.ts
+figma.showUI(__html__, { width: 360, height: 400 });
 
-// 👇 Mark this function as async
-figma.ui.onmessage = async (msg: { type: string; count: number }) => {
+figma.listAvailableFontsAsync().then((fonts) => {
+  const defaultFonts = fonts
+    .filter((f) => {
+      const styles = ["Regular", "Medium"];
+      return styles.indexOf(f.fontName.style) !== -1;
+    })
+    .map((f) => f.fontName);
+
+  figma.ui.postMessage({ type: "font-list", fonts: defaultFonts });
+});
+
+figma.ui.onmessage = async (msg) => {
   if (msg.type === "generate-all-tag-styles") {
-    const base = msg.count; // e.g. 16
+    const base = msg.count;
+    const fontName = msg.fontName as FontName;
     const ratio = 1.618;
 
-    // Golden ratio step levels for common tags
-    const tagMap: { [tag: string]: number } = {
+    const tagMap: Record<string, number> = {
       h1: 5,
       h2: 4,
       h3: 3,
@@ -25,25 +36,21 @@ figma.ui.onmessage = async (msg: { type: string; count: number }) => {
       caption: -2,
     };
 
+    await figma.loadFontAsync(fontName);
+
     for (const tag in tagMap) {
       const step = tagMap[tag];
-      const fontSize = +(base * Math.pow(ratio, step)).toFixed(2);
-
-      // You can change font family & style here
-      const fontName = { family: "Poppins", style: "Regular" } as FontName;
-      await figma.loadFontAsync(fontName);
+      const fontSize = parseFloat((base * Math.pow(ratio, step)).toFixed(2));
 
       const style = figma.createTextStyle();
       style.name = `Golden Fonts/${tag.toUpperCase()}`;
       style.fontName = fontName;
       style.fontSize = fontSize;
       style.lineHeight = { value: fontSize * 1.3, unit: "PIXELS" };
-      style.description = `Golden Ratio tag: <${tag}>`;
+      style.description = `Golden Ratio style for <${tag}>`;
     }
 
-    figma.notify(
-      "All HTML tag text styles generated using the Golden Ratio 🎉"
-    );
+    figma.notify("All golden ratio styles generated 🎉");
     figma.closePlugin();
   }
 };
